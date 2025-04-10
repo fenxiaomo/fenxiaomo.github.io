@@ -1,0 +1,209 @@
+<!DOCTYPE html><html lang="zn-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>gs_core安装教程(一) | 焚小墨的个人博客</title><meta name="author" content="焚小墨"><meta name="copyright" content="焚小墨"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="gs_core安装教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gs_core安装教程(一)">
+<meta property="og:url" content="http://baixiaosheng.xyz/2025/04/03/gscore/%E6%97%A9%E6%9F%9A%E6%A0%B8%E5%BF%83%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%EF%BC%88linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA%EF%BC%89/index.html">
+<meta property="og:site_name" content="焚小墨的个人博客">
+<meta property="og:description" content="gs_core安装教程">
+<meta property="og:locale" content="zn_CN">
+<meta property="og:image" content="https://img.shetu66.com/2023/11/26/1700945633962444.jpg">
+<meta property="article:published_time" content="2025-04-03T15:06:53.414Z">
+<meta property="article:modified_time" content="2025-04-08T12:13:32.092Z">
+<meta property="article:author" content="焚小墨">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.shetu66.com/2023/11/26/1700945633962444.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "gs_core安装教程(一)",
+  "url": "http://baixiaosheng.xyz/2025/04/03/gscore/%E6%97%A9%E6%9F%9A%E6%A0%B8%E5%BF%83%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%EF%BC%88linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA%EF%BC%89/",
+  "image": "https://img.shetu66.com/2023/11/26/1700945633962444.jpg",
+  "datePublished": "2025-04-03T15:06:53.414Z",
+  "dateModified": "2025-04-08T12:13:32.092Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "焚小墨",
+      "url": "http://baixiaosheng.xyz/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://baixiaosheng.xyz/2025/04/03/gscore/%E6%97%A9%E6%9F%9A%E6%A0%B8%E5%BF%83%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%EF%BC%88linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA%EF%BC%89/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'gs_core安装教程(一)',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(https://tc.alcy.cc/i/2024/04/21/6624135dea473.webp);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/image/fengxiaomo.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/Java/"><i class="fa-fw fab fa-java"></i><span> JAVA</span></a></li><li><a class="site-page child" href="/categories/Python/"><i class="fa-fw fab fa-python"></i><span> Python</span></a></li><li><a class="site-page child" href="/categories/Bot/"><i class="fa-fw fas fa-robot"></i><span> QQbot</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(https://img.shetu66.com/2023/11/26/1700945633962444.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/%5Cimage%5Cfengxiaomo.jpg" alt="Logo"><span class="site-name">焚小墨的个人博客</span></a><a class="nav-page-title" href="/"><span class="site-name">gs_core安装教程(一)</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/Java/"><i class="fa-fw fab fa-java"></i><span> JAVA</span></a></li><li><a class="site-page child" href="/categories/Python/"><i class="fa-fw fab fa-python"></i><span> Python</span></a></li><li><a class="site-page child" href="/categories/Bot/"><i class="fa-fw fas fa-robot"></i><span> QQbot</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">gs_core安装教程(一)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-04-03T15:06:53.414Z" title="Created 2025-04-03 23:06:53">2025-04-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-04-08T12:13:32.092Z" title="Updated 2025-04-08 20:13:32">2025-04-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/gs-core/">gs_core</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="早柚核心安装教程（linux服务器上搭建）"><a href="#早柚核心安装教程（linux服务器上搭建）" class="headerlink" title="早柚核心安装教程（linux服务器上搭建）"></a>早柚核心安装教程（linux服务器上搭建）</h2><hr>
+<hr>
+<h2 id="1-环境准备（git，python，poetry）"><a href="#1-环境准备（git，python，poetry）" class="headerlink" title="1.环境准备（git，python，poetry）"></a>1.环境准备（git，python，poetry）</h2><p>（python环境必须&gt;3.8，建议版本3.12，poetry建议1.40）</p>
+<p>本例的服务器系统及环境：</p>
+<p>​			阿里云Linux<br>​			python 3.12</p>
+<p>​			poetry 1.4</p>
+<p>​			git 2.43</p>
+<p>查看git python poetry版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br><span class="line">python -V</span><br><span class="line">poetry -V</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-安装python"><a href="#2-安装python" class="headerlink" title="2.安装python"></a>2.安装python</h2><h3 id="2-1-解压下载的文件"><a href="#2-1-解压下载的文件" class="headerlink" title="2.1. 解压下载的文件"></a><strong>2.1. 解压下载的文件</strong></h3><p>使用以下命令解压下载的 <code>.tgz</code> 文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf Python-3.12.0.tgz</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-进入解压后的目录"><a href="#2-2-进入解压后的目录" class="headerlink" title="2.2. 进入解压后的目录"></a><strong>2.2. 进入解压后的目录</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Python-3.12.0</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-安装依赖"><a href="#2-3-安装依赖" class="headerlink" title="2.3. 安装依赖"></a><strong>2.3. 安装依赖</strong></h3><p>在编译安装 Python 之前，需要安装一些必要的依赖包。运行以下命令来安装这些依赖：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> yum -y install gcc zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel libpcap-devel xz-devel libffi-devel</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-配置和编译"><a href="#2-4-配置和编译" class="headerlink" title="2.4. 配置和编译"></a><strong>2.4. 配置和编译</strong></h3><p>运行以下命令来配置和编译 Python 源码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-安装-Python"><a href="#2-5-安装-Python" class="headerlink" title="2.5. 安装 Python"></a><strong>2.5. 安装 Python</strong></h3><p>编译完成后，使用以下命令安装 Python：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> make install</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-验证安装"><a href="#2-6-验证安装" class="headerlink" title="2.6. 验证安装"></a><strong>2.6. 验证安装</strong></h3><p>安装完成后，验证 Python 是否成功安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3.12 --version</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-配置环境变量"><a href="#2-7-配置环境变量" class="headerlink" title="2.7. 配置环境变量"></a><strong>2.7. 配置环境变量</strong></h3><p>如果您希望将 Python 3.12 设置为默认版本，可以修改环境变量：</p>
+<ol>
+<li><p><strong>编辑 <code>.bashrc</code> 文件</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>添加以下内容</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> python=<span class="string">&#x27;python3.12&#x27;</span></span><br><span class="line"><span class="built_in">alias</span> pip=<span class="string">&#x27;pip3.12&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>使配置生效</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="3-安装poetry"><a href="#3-安装poetry" class="headerlink" title="3.安装poetry"></a>3.安装poetry</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install poetry</span><br></pre></td></tr></table></figure>
+
+<hr>
+<hr>
+<h2 id="1-早柚核心下载"><a href="#1-早柚核心下载" class="headerlink" title="1.早柚核心下载"></a>1.早柚核心下载</h2><h3 id="1-1-拉取项目"><a href="#1-1-拉取项目" class="headerlink" title="1.1.拉取项目"></a>1.1.拉取项目</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#创建一个目录用于放早柚核心</span><br><span class="line">mkdir nbbot</span><br><span class="line">cd nbbot</span><br><span class="line">#拉取早柚核心源码</span><br><span class="line">git clone https://github.com/Genshin-bots/gsuid_core.git --depth=1 --single-branch</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-进入项目目录并安装依赖"><a href="#1-2-进入项目目录并安装依赖" class="headerlink" title="1.2.进入项目目录并安装依赖"></a>1.2.进入项目目录并安装依赖</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> gsuid_core</span><br><span class="line">poetry install</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-安装所需插件（可选）"><a href="#1-3-安装所需插件（可选）" class="headerlink" title="1.3.安装所需插件（可选）"></a>1.3.安装所需插件（可选）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> gsuid_core</span><br><span class="line"><span class="built_in">cd</span> plugins</span><br><span class="line"><span class="comment"># 安装v4 GenshinUID</span></span><br><span class="line">git <span class="built_in">clone</span> -b v4 https://github.com/KimigaiiWuyi/GenshinUID.git --depth=1 --single-branch</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-启动core"><a href="#1-4-启动core" class="headerlink" title="1.4.启动core"></a>1.4.启动core</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry run core</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://baixiaosheng.xyz">焚小墨</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://baixiaosheng.xyz/2025/04/03/gscore/%E6%97%A9%E6%9F%9A%E6%A0%B8%E5%BF%83%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%EF%BC%88linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA%EF%BC%89/">http://baixiaosheng.xyz/2025/04/03/gscore/%E6%97%A9%E6%9F%9A%E6%A0%B8%E5%BF%83%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%EF%BC%88linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA%EF%BC%89/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://img.shetu66.com/2023/11/26/1700945633962444.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/03/21/java/List/" title="Java集合"><img class="cover" src="https://pic.616pic.com/bg_w1180/00/05/42/OF1TtXRmuw.jpg!/fw/1120" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">Java集合</div></div><div class="info-2"><div class="info-item-1">Java集合框架知识点整理</div></div></div></a><a class="pagination-related" href="/2025/04/06/gscore/%E6%97%A9%E6%9F%9A%E6%A0%B8%E5%BF%83%E6%8E%A5%E5%85%A5qq%E6%9C%BA%E5%99%A8%E4%BA%BA%EF%BC%88%E4%BA%8C%EF%BC%89/" title="gs_core安装教程（二）"><img class="cover" src="/image/kingnight.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">gs_core安装教程（二）</div></div><div class="info-2"><div class="info-item-1">gs_core安装教程</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/image/fengxiaomo.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">焚小墨</div><div class="author-info-description">云层里藏着阳光，阴霾总会散去。</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fenxiaomo"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A9%E6%9F%9A%E6%A0%B8%E5%BF%83%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%EF%BC%88linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">早柚核心安装教程（linux服务器上搭建）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87%EF%BC%88git%EF%BC%8Cpython%EF%BC%8Cpoetry%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">1.环境准备（git，python，poetry）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85python"><span class="toc-number">3.</span> <span class="toc-text">2.安装python</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E8%A7%A3%E5%8E%8B%E4%B8%8B%E8%BD%BD%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-number">3.1.</span> <span class="toc-text">2.1. 解压下载的文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E8%BF%9B%E5%85%A5%E8%A7%A3%E5%8E%8B%E5%90%8E%E7%9A%84%E7%9B%AE%E5%BD%95"><span class="toc-number">3.2.</span> <span class="toc-text">2.2. 进入解压后的目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="toc-number">3.3.</span> <span class="toc-text">2.3. 安装依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E9%85%8D%E7%BD%AE%E5%92%8C%E7%BC%96%E8%AF%91"><span class="toc-number">3.4.</span> <span class="toc-text">2.4. 配置和编译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E5%AE%89%E8%A3%85-Python"><span class="toc-number">3.5.</span> <span class="toc-text">2.5. 安装 Python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E9%AA%8C%E8%AF%81%E5%AE%89%E8%A3%85"><span class="toc-number">3.6.</span> <span class="toc-text">2.6. 验证安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">3.7.</span> <span class="toc-text">2.7. 配置环境变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85poetry"><span class="toc-number">4.</span> <span class="toc-text">3.安装poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%97%A9%E6%9F%9A%E6%A0%B8%E5%BF%83%E4%B8%8B%E8%BD%BD"><span class="toc-number">5.</span> <span class="toc-text">1.早柚核心下载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%8B%89%E5%8F%96%E9%A1%B9%E7%9B%AE"><span class="toc-number">5.1.</span> <span class="toc-text">1.1.拉取项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E8%BF%9B%E5%85%A5%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E5%B9%B6%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="toc-number">5.2.</span> <span class="toc-text">1.2.进入项目目录并安装依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%AE%89%E8%A3%85%E6%89%80%E9%9C%80%E6%8F%92%E4%BB%B6%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-number">5.3.</span> <span class="toc-text">1.3.安装所需插件（可选）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E5%90%AF%E5%8A%A8core"><span class="toc-number">5.4.</span> <span class="toc-text">1.4.启动core</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/04/06/gscore/%E6%97%A9%E6%9F%9A%E6%A0%B8%E5%BF%83%E6%8E%A5%E5%85%A5qq%E6%9C%BA%E5%99%A8%E4%BA%BA%EF%BC%88%E4%BA%8C%EF%BC%89/" title="gs_core安装教程（二）"><img src="/image/kingnight.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="gs_core安装教程（二）"/></a><div class="content"><a class="title" href="/2025/04/06/gscore/%E6%97%A9%E6%9F%9A%E6%A0%B8%E5%BF%83%E6%8E%A5%E5%85%A5qq%E6%9C%BA%E5%99%A8%E4%BA%BA%EF%BC%88%E4%BA%8C%EF%BC%89/" title="gs_core安装教程（二）">gs_core安装教程（二）</a><time datetime="2025-04-05T17:45:18.957Z" title="Created 2025-04-06 01:45:18">2025-04-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/03/gscore/%E6%97%A9%E6%9F%9A%E6%A0%B8%E5%BF%83%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%EF%BC%88linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA%EF%BC%89/" title="gs_core安装教程(一)"><img src="https://img.shetu66.com/2023/11/26/1700945633962444.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="gs_core安装教程(一)"/></a><div class="content"><a class="title" href="/2025/04/03/gscore/%E6%97%A9%E6%9F%9A%E6%A0%B8%E5%BF%83%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%EF%BC%88linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA%EF%BC%89/" title="gs_core安装教程(一)">gs_core安装教程(一)</a><time datetime="2025-04-03T15:06:53.414Z" title="Created 2025-04-03 23:06:53">2025-04-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/21/java/List/" title="Java集合"><img src="https://pic.616pic.com/bg_w1180/00/05/42/OF1TtXRmuw.jpg!/fw/1120" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java集合"/></a><div class="content"><a class="title" href="/2025/03/21/java/List/" title="Java集合">Java集合</a><time datetime="2025-03-20T17:36:09.715Z" title="Created 2025-03-21 01:36:09">2025-03-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/21/java/java/" title="Java基础"><img src="https://tse4-mm.cn.bing.net/th/id/OIP-C.4p9DsT2u-kaltIxvFTzzBAHaEK?rs=1&amp;pid=ImgDetMain" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java基础"/></a><div class="content"><a class="title" href="/2025/03/21/java/java/" title="Java基础">Java基础</a><time datetime="2025-03-20T17:28:27.762Z" title="Created 2025-03-21 01:28:27">2025-03-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/21/yz/RT-Thread/" title="RT-Thread"><img src="/image/kingnight.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RT-Thread"/></a><div class="content"><a class="title" href="/2025/03/21/yz/RT-Thread/" title="RT-Thread">RT-Thread</a><time datetime="2025-03-20T17:14:01.831Z" title="Created 2025-03-21 01:14:01">2025-03-21</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://img.shetu66.com/2023/11/26/1700945633962444.jpg);"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2025 By 焚小墨</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.3</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><img class="icp-icon" src="https://img.shiguangdev.cn/i/2024/10/17/6710c59fd9fc7.png"><span>鄂ICP备2024055865号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><div class="js-pjax"></div><script src="/js/light.js" defer></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script async src="https://npm.elemecdn.com/tzy-blog/lib/js/other/sakura.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="true" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="true" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body></html>
